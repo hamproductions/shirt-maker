@@ -1,0 +1,21 @@
+{
+  "title": "Dumb Shirt Maker (tmp)",
+  "description": "Helps you when HITORIDAKENANTEERABENAIYO",
+  "site_name": "LoveLive! Sorter",
+  "save": "Save",
+  "cancel": "Cancel",
+  "footer": {
+    "created_by": "Created by",
+    "footer_text": "Thanks @luseo29 for the template",
+    "source_code": "Check out source code on "
+  },
+  "error_page": {
+    "title": "Oopsie",
+    "text": "Sometimes refreshing the page fix it, Clearing the data might also fix it too. If it doesn't ping ",
+    "discord_link": "@hamp on Discord",
+    "to_fix_it": " to fix it.",
+    "copy": "Copy Error Message",
+    "reload": "Reload Page",
+    "clear": "Clear Data and Reload Page"
+  }
+}
