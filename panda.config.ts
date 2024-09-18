@@ -59,7 +59,16 @@ const config = defineConfig({
     }
   },
 
-  lightningcss: true
+  lightningcss: true,
+
+  globalFontface: {
+    Meiryo: {
+      src: 'url(/fonts/Meiryo-Bold.ttf) format("ttf")',
+      fontWeight: 'bold',
+      fontStyle: 'normal',
+      fontDisplay: 'swap'
+    }
+  }
 });
 
 export default config;
