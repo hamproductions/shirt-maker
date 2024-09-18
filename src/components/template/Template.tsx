@@ -20,7 +20,7 @@ export function Template({
   return (
     <Stack
       style={{ fontSize: `${baseSize ?? minSize}px` }}
-      gap={0}
+      gap={1}
       fontFamily={'Meiryo'}
       fontWeight="bold"
       flexWrap="nowrap"
@@ -30,7 +30,7 @@ export function Template({
           <HStack key={row} gap="1" alignItems="center" flexWrap="nowrap">
             {line.map((l, col) => {
               const size = l.size / minSize;
-              if (l.placeholder) {
+              if ('placeholder' in l) {
                 const text = placeholderData?.[l.placeholder.key] || l.placeholder.default;
                 const textSize = Math.min(
                   (l.placeholder.default.length / text.length) * size,
@@ -42,7 +42,7 @@ export function Template({
                     key={col}
                     style={{
                       fontSize: `${textSize}em`,
-                      color: transparent ? 'transparent' : 'var(--colors-bg-default)'
+                      color: 'var(--colors-bg-default)'
                     }}
                     flexGrow={99}
                     width="100%"
@@ -51,7 +51,7 @@ export function Template({
                     px={1}
                     color="bg.default"
                     textWrap="nowrap"
-                    // lineHeight="tight"
+                    lineHeight="tight"
                     bgColor="fg.default"
                     mixBlendMode={{
                       base: 'multiply',

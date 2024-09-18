@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { FaCopy, FaDownload } from 'react-icons/fa6';
@@ -7,19 +7,23 @@ import { useToaster } from '../../context/ToasterContext';
 import { Box, HStack, Stack } from 'styled-system/jsx';
 import { Metadata } from '~/components/layout/Metadata';
 import * as RadioGroup from '~/components/ui/styled/radio-group';
+import type { PlaceholderText } from '~/utils/presets';
 import { PRESETS } from '~/utils/presets';
-import { Template } from '~/components/template/Template';
 import { Input } from '~/components/ui/styled/input';
 import { Button } from '~/components/ui/styled/button';
+import { TemplateCanvas } from '~/components/template/TemplateCanvas';
 
 export function Page() {
   const { toast } = useToaster();
   const { t, i18n } = useTranslation();
   const [presetIndex, setPresetIndex] = useState(0);
   const [placeholderData, setPlaceholderData] = useState<Record<string, string>>({});
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const preset = PRESETS[presetIndex];
-  const placeholders = PRESETS[presetIndex].data.flatMap((d) => d.filter((e) => !!e.placeholder));
+  const placeholders = PRESETS[presetIndex].data.flatMap((d) =>
+    d.filter((e): e is PlaceholderText => 'placeholder' in e)
+  );
 
   const title = 'Dumb Shirt Maker';
 
@@ -37,16 +41,13 @@ export function Page() {
   const makeScreenshot = async () => {
     setShowRenderingCanvas(true);
     toast?.(t('toast.generating_screenshot'));
-    const toCanvas = await import('html2canvas-add-mix-blend-mode').then(
-      (module) => module.default
-    );
     const resultsBox = document.getElementById('results');
 
     if (resultsBox) {
-      const canvas = await toCanvas(resultsBox, { backgroundColor: 'transparent' });
+      const canvas = canvasRef.current;
       setShowRenderingCanvas(false);
-      return await new Promise<Blob>((resolve, reject) =>
-        canvas.toBlob(
+      return await new Promise<Blob>((resolve, reject) => {
+        canvas?.toBlob(
           (blob) => {
             if (blob) {
               resolve(blob);
@@ -56,8 +57,8 @@ export function Page() {
           },
           'image/png',
           1
-        )
-      );
+        );
+      });
     }
   };
 
@@ -120,7 +121,8 @@ export function Page() {
             />
           );
         })}
-        <Template preset={preset} baseSize={50} placeholderData={placeholderData} />
+        {/* <Template preset={preset} baseSize={50} placeholderData={placeholderData} /> */}
+        <TemplateCanvas preset={preset} baseSize={50} placeholderData={placeholderData} />
       </Stack>
       <HStack justifyContent="center">
         <Button variant="subtle" onClick={() => void screenshot()}>
@@ -133,7 +135,8 @@ export function Page() {
       {showRenderingCanvas && (
         <Box position="absolute" w="0" h="0" overflow="hidden">
           <Stack id="results" w="fit-content" h="fit-content">
-            <Template preset={preset} placeholderData={placeholderData} transparent />
+            <TemplateCanvas ref={canvasRef} preset={preset} placeholderData={placeholderData} />
+            {/* <Template preset={preset} placeholderData={placeholderData} transparent /> */}
           </Stack>
         </Box>
       )}

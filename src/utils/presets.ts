@@ -1,8 +1,12 @@
-export type PresetData = {
-  text?: string;
-  size: number;
-  placeholder?: { key: string; default: string };
-}[][];
+type BasePresetData = { size: number };
+export type NormalText = BasePresetData & {
+  text: string;
+};
+export type PlaceholderText = BasePresetData & {
+  placeholder: { key: string; default: string };
+};
+
+export type PresetData = (NormalText | PlaceholderText)[][];
 export type Preset = {
   text: string;
   data: PresetData;
