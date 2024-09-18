@@ -1,6 +1,7 @@
 import { max, min, sum } from 'lodash-es';
 import type { RefObject } from 'react';
 import { useEffect, useRef } from 'react';
+import { css } from 'styled-system/css';
 import { token } from 'styled-system/tokens';
 import { useColorModeContext } from '~/context/ColorModeContext';
 import { getTextDimensions } from '~/utils/canvas';
@@ -160,5 +161,5 @@ export function TemplateCanvas({
     }, 0);
   }, [preset, placeholderData, colorMode]);
 
-  return <canvas ref={canvasRef} />;
+  return <canvas className={css({ fontFamily: 'var(--font-meiryo)' })} ref={canvasRef} />;
 }

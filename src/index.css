@@ -1,5 +1,5 @@
 @layer reset, base, tokens, recipes, utilities;
 
-html {
-  scroll-snap-type: y proximity;
+:root {
+  --font-meiryo: 'Meiryo';
 }

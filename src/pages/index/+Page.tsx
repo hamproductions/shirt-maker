@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { FaCopy, FaDownload } from 'react-icons/fa6';
 import { useToaster } from '../../context/ToasterContext';
 
-import { Box, HStack, Stack } from 'styled-system/jsx';
+import { Box, Center, HStack, Stack } from 'styled-system/jsx';
 import { Metadata } from '~/components/layout/Metadata';
 import * as RadioGroup from '~/components/ui/styled/radio-group';
 import type { PlaceholderText } from '~/utils/presets';
@@ -89,67 +89,69 @@ export function Page() {
   return (
     <>
       <Metadata title={t('title')} helmet />
-      <Stack alignItems="center" w="full" maxWidth="breakpoint-lg">
-        <Heading as="h1" fontSize="2xl">
-          {t('title')}
-        </Heading>
-        <Text>
-          {t('description')}{' '}
-          <Link href="https://x.com/luseo29/status/1799676661627252779" target="_blank">
-            {t('original_link')}
-          </Link>
-        </Text>
-        <Heading as="h2" fontSize="lg">
-          {t('presets')}
-        </Heading>
-        <RadioGroup.Root
-          defaultValue={`0`}
-          value={`${presetIndex}`}
-          size="sm"
-          onValueChange={({ value }) => setPresetIndex(Number(value))}
-        >
-          {PRESETS.map((option, index) => {
-            const text = replacePlaceholder(option.text, placeholderData);
+      <Center>
+        <Stack alignItems="center" w="full" maxWidth="breakpoint-lg">
+          <Heading as="h1" fontSize="2xl">
+            {t('title')}
+          </Heading>
+          <Text>
+            {t('description')}{' '}
+            <Link href="https://x.com/luseo29/status/1799676661627252779" target="_blank">
+              {t('original_link')}
+            </Link>
+          </Text>
+          <Heading as="h2" fontSize="lg">
+            {t('presets')}
+          </Heading>
+          <RadioGroup.Root
+            defaultValue={`0`}
+            value={`${presetIndex}`}
+            size="sm"
+            onValueChange={({ value }) => setPresetIndex(Number(value))}
+          >
+            {PRESETS.map((option, index) => {
+              const text = replacePlaceholder(option.text, placeholderData);
+              return (
+                <RadioGroup.Item key={index} value={`${index}`}>
+                  <RadioGroup.ItemControl />
+                  <RadioGroup.ItemText>{text}</RadioGroup.ItemText>
+                  <RadioGroup.ItemHiddenInput />
+                </RadioGroup.Item>
+              );
+            })}
+          </RadioGroup.Root>
+          <Heading as="h2" fontSize="lg">
+            {t('customize_text')}
+          </Heading>
+          <Text>{t('light_mode')}</Text>
+          {placeholders.map(({ placeholder }) => {
+            if (!placeholder) return null;
             return (
-              <RadioGroup.Item key={index} value={`${index}`}>
-                <RadioGroup.ItemControl />
-                <RadioGroup.ItemText>{text}</RadioGroup.ItemText>
-                <RadioGroup.ItemHiddenInput />
-              </RadioGroup.Item>
+              <Input
+                key={placeholder.key}
+                value={placeholderData?.[placeholder.key]}
+                defaultValue={placeholder.default}
+                onChange={(e) =>
+                  setPlaceholderData((d) => ({ ...d, [placeholder.key]: e.target.value }))
+                }
+              />
             );
           })}
-        </RadioGroup.Root>
-        <Heading as="h2" fontSize="lg">
-          {t('customize_text')}
-        </Heading>
-        <Text>{t('light_mode')}</Text>
-        {placeholders.map(({ placeholder }) => {
-          if (!placeholder) return null;
-          return (
-            <Input
-              key={placeholder.key}
-              value={placeholderData?.[placeholder.key]}
-              defaultValue={placeholder.default}
-              onChange={(e) =>
-                setPlaceholderData((d) => ({ ...d, [placeholder.key]: e.target.value }))
-              }
-            />
-          );
-        })}
-        <Heading as="h2" fontSize="lg">
-          {t('preview')}
-        </Heading>
-        {/* <Template preset={preset} baseSize={50} placeholderData={placeholderData} /> */}
-        <TemplateCanvas preset={preset} baseSize={50} placeholderData={placeholderData} />
-      </Stack>
-      <HStack justifyContent="center">
-        <Button variant="subtle" onClick={() => void screenshot()}>
-          <FaCopy /> {t('copy')}
-        </Button>
-        <Button onClick={() => void download()}>
-          <FaDownload /> {t('download')}
-        </Button>
-      </HStack>
+          <Heading as="h2" fontSize="lg">
+            {t('preview')}
+          </Heading>
+          {/* <Template preset={preset} baseSize={50} placeholderData={placeholderData} /> */}
+          <TemplateCanvas preset={preset} baseSize={50} placeholderData={placeholderData} />
+          <HStack justifyContent="center">
+            <Button variant="subtle" onClick={() => void screenshot()}>
+              <FaCopy /> {t('copy')}
+            </Button>
+            <Button onClick={() => void download()}>
+              <FaDownload /> {t('download')}
+            </Button>
+          </HStack>
+        </Stack>
+      </Center>
       <Box position="absolute" w="0" h="0" overflow="hidden">
         <Stack id="results" w="fit-content" h="fit-content">
           <TemplateCanvas ref={canvasRef} preset={preset} placeholderData={placeholderData} />
