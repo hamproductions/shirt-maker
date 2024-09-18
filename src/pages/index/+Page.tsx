@@ -28,8 +28,6 @@ export function Page() {
     d.filter((e): e is PlaceholderText => 'placeholder' in e)
   );
 
-  const title = 'Dumb Shirt Maker';
-
   const replacePlaceholder = (templateString: string, placeholderData: Record<string, string>) => {
     return templateString.replaceAll(/<(.*?)>/g, (_, key) => {
       return (
@@ -40,15 +38,12 @@ export function Page() {
     });
   };
 
-  const [showRenderingCanvas, setShowRenderingCanvas] = useState(false);
   const makeScreenshot = async () => {
-    setShowRenderingCanvas(true);
     toast?.(t('toast.generating_screenshot'));
     const resultsBox = document.getElementById('results');
 
     if (resultsBox) {
       const canvas = canvasRef.current;
-      setShowRenderingCanvas(false);
       return await new Promise<Blob>((resolve, reject) => {
         canvas?.toBlob(
           (blob) => {
@@ -93,7 +88,7 @@ export function Page() {
 
   return (
     <>
-      <Metadata title={title} helmet />
+      <Metadata title={t('title')} helmet />
       <Stack alignItems="center" w="full" maxWidth="breakpoint-lg">
         <Heading as="h1" fontSize="2xl">
           {t('title')}
@@ -155,14 +150,12 @@ export function Page() {
           <FaDownload /> {t('download')}
         </Button>
       </HStack>
-      {showRenderingCanvas && (
-        <Box position="absolute" w="0" h="0" overflow="hidden">
-          <Stack id="results" w="fit-content" h="fit-content">
-            <TemplateCanvas ref={canvasRef} preset={preset} placeholderData={placeholderData} />
-            {/* <Template preset={preset} placeholderData={placeholderData} transparent /> */}
-          </Stack>
-        </Box>
-      )}
+      <Box position="absolute" w="0" h="0" overflow="hidden">
+        <Stack id="results" w="fit-content" h="fit-content">
+          <TemplateCanvas ref={canvasRef} preset={preset} placeholderData={placeholderData} />
+          {/* <Template preset={preset} placeholderData={placeholderData} transparent /> */}
+        </Stack>
+      </Box>
     </>
   );
 }

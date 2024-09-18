@@ -6,9 +6,6 @@ import { useColorModeContext } from '~/context/ColorModeContext';
 import { getTextDimensions } from '~/utils/canvas';
 import type { Preset, PresetData } from '~/utils/presets';
 
-const PADDING = 4;
-const BOX_PADDING = 4;
-
 export function TemplateCanvas({
   ref,
   preset,
@@ -27,6 +24,9 @@ export function TemplateCanvas({
   const { colorMode } = useColorModeContext();
 
   const canvasRef = ref ?? _canvasRef;
+
+  const PADDING = 0.15 * (baseSize ?? minSize);
+  const BOX_PADDING = 0.15 * (baseSize ?? minSize);
 
   const getRowSize = (row: PresetData[number]) => (row[0].size / minSize) * (baseSize ?? minSize);
   const getColText = (col: PresetData[number][number]) =>
@@ -63,8 +63,6 @@ export function TemplateCanvas({
       max(dimensions.map((row) => sum(row.map((col) => col.width)) + PADDING * (row.length - 1))) ??
       0;
 
-    console.log(dimensions.flatMap((d) => d.map((d) => d.height)).join(','));
-
     const totalHeight =
       sum(dimensions.map((row) => max(row.map((col) => col.height)))) +
       PADDING * (dimensions.length - 1);
@@ -80,20 +78,16 @@ export function TemplateCanvas({
     );
 
     presetData.forEach((row) => {
-      const size = getRowSize(row);
-      ctx.font = `bold ${size}px Meiryo`;
-      y += size;
       const hasPlaceholder = row.find((col) => 'placeholder' in col);
+
+      const rowFontSize = getRowSize(row);
+      ctx.font = `bold ${rowFontSize}px Meiryo`;
+
       const rowDimensions = row.map((col) => {
         const text = getColText(col);
         const size = getTextDimensions(ctx, text);
         return size.width;
       });
-      if (!hasPlaceholder) {
-        const characterCount = sum(row.map((col) => getColText(col).length));
-        const colWidth = sum(rowDimensions);
-        ctx.letterSpacing = `${(totalWidth - colWidth) / (characterCount - 1)}px`;
-      }
       const colWidth = row
         .filter((col) => !('placeholder' in col))
         .map((col) => {
@@ -101,20 +95,37 @@ export function TemplateCanvas({
           const size = getTextDimensions(ctx, text);
           return size.width;
         });
-      const flexSpace = totalWidth - sum(colWidth);
+
+      const flexSpace = totalWidth - (sum(colWidth) + PADDING * (row.length - 1));
+
+      const rowHeight = getTextDimensions(ctx, getColText(row[0])).height;
+      y += hasPlaceholder ? rowHeight + BOX_PADDING : rowHeight;
 
       row.forEach((col) => {
         const text = getColText(col);
-        const size = getTextDimensions(ctx, text);
+        const textSize = getTextDimensions(ctx, text);
+        // ctx.fillStyle = 'red';
+        // ctx.fillRect(x - 2, y - 2, 4, 4);
         if ('placeholder' in col) {
           ctx.fillStyle = `${fgColor}`;
-          ctx.fillRect(x, y - size.height + BOX_PADDING, flexSpace, size.height + 2 * BOX_PADDING);
+          ctx.fillRect(
+            x,
+            y - textSize.height - BOX_PADDING,
+            flexSpace,
+            textSize.height + 2 * BOX_PADDING
+          );
           ctx.globalCompositeOperation = 'xor';
-          const spacing = (flexSpace - size.width - 4 * BOX_PADDING) / (text.length - 1);
-          ctx.letterSpacing = `${spacing}px`;
-          ctx.fillText(text, x + BOX_PADDING, y + BOX_PADDING, totalWidth);
+          ctx.letterSpacing = `${
+            (flexSpace - textSize.width - 2 * BOX_PADDING) / (text.length - 1)
+          }px`;
+          ctx.fillText(text, x + BOX_PADDING, y, flexSpace);
           ctx.globalCompositeOperation = 'source-over';
         } else {
+          if (!hasPlaceholder) {
+            const characterCount = sum(row.map((col) => getColText(col).length));
+            const colWidth = sum(rowDimensions);
+            ctx.letterSpacing = `${(totalWidth - colWidth) / (characterCount - 1)}px`;
+          }
           // ctx.fillStyle = `red`;
           // ctx.fillRect(
           //   x,
@@ -123,13 +134,13 @@ export function TemplateCanvas({
           //   size.height
           // );
           ctx.fillStyle = `${fgColor}`;
-          ctx.fillText(col.text, x, hasPlaceholder ? y + BOX_PADDING : y, totalWidth);
+          ctx.fillText(col.text, x, y, totalWidth);
         }
-        x += size.width + PADDING;
+        x += textSize.width + PADDING;
         ctx.letterSpacing = '0px';
       });
       x = 0;
-      y += PADDING + (hasPlaceholder ? 2 * BOX_PADDING : 0);
+      y += hasPlaceholder ? PADDING + BOX_PADDING : PADDING;
     });
   };
 
