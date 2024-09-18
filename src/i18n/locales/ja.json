@@ -24,5 +24,8 @@
     "copy": "エラーメッセージをコピー",
     "reload": "再読み込み",
     "clear": "データをクリアして際読み込み"
+  },
+  "toast": {
+    "generating_screenshot": "画像生成しています…"
   }
 }

@@ -24,5 +24,8 @@
     "copy": "Copy Error Message",
     "reload": "Reload Page",
     "clear": "Clear Data and Reload Page"
+  },
+  "toast": {
+    "generating_screenshot": "Generating Screenshot"
   }
 }

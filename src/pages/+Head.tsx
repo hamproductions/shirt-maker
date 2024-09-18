@@ -1,4 +1,4 @@
-import { Partytown } from '@builder.io/partytown/react';
+// import { Partytown } from '@builder.io/partytown/react';
 import { Metadata } from '~/components/layout/Metadata';
 
 export function Head() {
@@ -6,7 +6,7 @@ export function Head() {
     <>
       <Metadata />
 
-      <script
+      {/* <script
         type="text/partytown"
         src="https://www.googletagmanager.com/gtag/js?id=G-GWEPPCT889"
       ></script>
@@ -25,7 +25,7 @@ export function Head() {
         }}
       />
 
-      <Partytown lib={(import.meta.env.PUBLIC_ENV__BASE_URL ?? '') + '/~partytown/'} />
+      <Partytown lib={(import.meta.env.PUBLIC_ENV__BASE_URL ?? '') + '/~partytown/'} /> */}
     </>
   );
 }

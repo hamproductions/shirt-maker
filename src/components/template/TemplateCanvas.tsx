@@ -143,8 +143,8 @@ export function TemplateCanvas({
     setTimeout(() => {
       clearCanvas();
       renderContent();
-    }, 0);
-  }, [ref, preset, placeholderData, colorMode]);
+    }, 10);
+  }, [preset, placeholderData, colorMode]);
 
   return <canvas ref={canvasRef} />;
 }
