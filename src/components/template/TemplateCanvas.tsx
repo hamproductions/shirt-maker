@@ -40,6 +40,9 @@ export function TemplateCanvas({
     const ctx = canvasRef.current.getContext('2d');
     if (!ctx) return;
 
+    ctx.textBaseline = 'bottom';
+    ctx.fontKerning = 'none';
+
     const dimensions = presetData.map((row) =>
       row.map((col) => {
         const size = getRowSize(row);
@@ -48,8 +51,8 @@ export function TemplateCanvas({
         if ('placeholder' in col) {
           const { width, height } = getTextDimensions(ctx, text);
           return {
-            width: width + 2 * PADDING,
-            height: height + 2 * PADDING
+            width: width + 2 * BOX_PADDING,
+            height: height + 2 * BOX_PADDING
           };
         }
         return getTextDimensions(ctx, text);
@@ -59,6 +62,8 @@ export function TemplateCanvas({
     const totalWidth =
       max(dimensions.map((row) => sum(row.map((col) => col.width)) + PADDING * (row.length - 1))) ??
       0;
+
+    console.log(dimensions.flatMap((d) => d.map((d) => d.height)).join(','));
 
     const totalHeight =
       sum(dimensions.map((row) => max(row.map((col) => col.height)))) +
@@ -73,9 +78,6 @@ export function TemplateCanvas({
     const fgColor = getComputedStyle(canvas).getPropertyValue(
       token('colors.fg.default').replace('var(', '').replace(')', '')
     );
-
-    ctx.textBaseline = 'bottom';
-    ctx.fontKerning = 'none';
 
     presetData.forEach((row) => {
       const size = getRowSize(row);
@@ -106,7 +108,7 @@ export function TemplateCanvas({
         const size = getTextDimensions(ctx, text);
         if ('placeholder' in col) {
           ctx.fillStyle = `${fgColor}`;
-          ctx.fillRect(x, y - size.height, flexSpace, size.height + 2 * BOX_PADDING);
+          ctx.fillRect(x, y - size.height + BOX_PADDING, flexSpace, size.height + 2 * BOX_PADDING);
           ctx.globalCompositeOperation = 'xor';
           const spacing = (flexSpace - size.width - 4 * BOX_PADDING) / (text.length - 1);
           ctx.letterSpacing = `${spacing}px`;
@@ -143,7 +145,7 @@ export function TemplateCanvas({
     setTimeout(() => {
       clearCanvas();
       renderContent();
-    }, 10);
+    }, 0);
   }, [preset, placeholderData, colorMode]);
 
   return <canvas ref={canvasRef} />;
