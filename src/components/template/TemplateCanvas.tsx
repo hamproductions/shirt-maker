@@ -108,9 +108,10 @@ export function TemplateCanvas({
         // ctx.fillRect(x - 2, y - 2, 4, 4);
         if ('placeholder' in col) {
           ctx.fillStyle = `${fgColor}`;
+          const { actualBoundingBoxAscent, actualBoundingBoxLeft } = ctx.measureText(text);
           ctx.fillRect(
-            x,
-            y - textSize.height - BOX_PADDING,
+            x - actualBoundingBoxLeft,
+            y - actualBoundingBoxAscent - BOX_PADDING,
             flexSpace,
             textSize.height + 2 * BOX_PADDING
           );
@@ -118,7 +119,7 @@ export function TemplateCanvas({
           ctx.letterSpacing = `${
             (flexSpace - textSize.width - 2 * BOX_PADDING) / (text.length - 1)
           }px`;
-          ctx.fillText(text, x + BOX_PADDING, y, flexSpace);
+          ctx.fillText(text, x + BOX_PADDING, y);
           ctx.globalCompositeOperation = 'source-over';
         } else {
           if (!hasPlaceholder) {
