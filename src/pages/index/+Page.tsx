@@ -12,6 +12,9 @@ import { PRESETS } from '~/utils/presets';
 import { Input } from '~/components/ui/styled/input';
 import { Button } from '~/components/ui/styled/button';
 import { TemplateCanvas } from '~/components/template/TemplateCanvas';
+import { Heading } from '~/components/ui/styled/heading';
+import { Link } from '~/components/ui/styled/link';
+import { Text } from '~/components/ui/styled/text';
 
 export function Page() {
   const { toast } = useToaster();
@@ -91,10 +94,23 @@ export function Page() {
   return (
     <>
       <Metadata title={title} helmet />
-      <Stack alignItems="center" w="full">
+      <Stack alignItems="center" w="full" maxWidth="breakpoint-lg">
+        <Heading as="h1" fontSize="2xl">
+          {t('title')}
+        </Heading>
+        <Text>
+          {t('description')}{' '}
+          <Link href="https://x.com/luseo29/status/1799676661627252779" target="_blank">
+            {t('original_link')}
+          </Link>
+        </Text>
+        <Heading as="h2" fontSize="lg">
+          {t('presets')}
+        </Heading>
         <RadioGroup.Root
           defaultValue={`0`}
           value={`${presetIndex}`}
+          size="sm"
           onValueChange={({ value }) => setPresetIndex(Number(value))}
         >
           {PRESETS.map((option, index) => {
@@ -108,6 +124,10 @@ export function Page() {
             );
           })}
         </RadioGroup.Root>
+        <Heading as="h2" fontSize="lg">
+          {t('customize_text')}
+        </Heading>
+        <Text>{t('light_mode')}</Text>
         {placeholders.map(({ placeholder }) => {
           if (!placeholder) return null;
           return (
@@ -121,15 +141,18 @@ export function Page() {
             />
           );
         })}
+        <Heading as="h2" fontSize="lg">
+          {t('preview')}
+        </Heading>
         {/* <Template preset={preset} baseSize={50} placeholderData={placeholderData} /> */}
         <TemplateCanvas preset={preset} baseSize={50} placeholderData={placeholderData} />
       </Stack>
       <HStack justifyContent="center">
         <Button variant="subtle" onClick={() => void screenshot()}>
-          <FaCopy /> {t('results.copy')}
+          <FaCopy /> {t('copy')}
         </Button>
         <Button onClick={() => void download()}>
-          <FaDownload /> {t('results.download')}
+          <FaDownload /> {t('download')}
         </Button>
       </HStack>
       {showRenderingCanvas && (

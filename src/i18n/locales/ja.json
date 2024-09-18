@@ -1,13 +1,19 @@
 {
-  "title": "{{ titlePrefix }}ランキング",
-  "defaultTitlePrefix": "ラブライブシリーズ",
-  "description": "ヒトリダケナンテエラベナイヨーの時に役に立てるかも",
-  "site_name": "ラブライブ!ランキング",
-  "save": "保存",
+  "title": "例のTシャツメーカー",
+  "description": "自分のデザインの欲しい？作ってみよう！デザインは",
+  "original_link": "@luseo29さんのデザインを参考しました。",
+  "site_name": "例のTシャツメーカー",
+  "save": "パソコンに保存する",
+  "copy": "コピーする",
+  "Download": "ダウンロード",
   "cancel": "キャンセル",
+  "presets": "デザインを選択する",
+  "customize_text": "テキストを編集する",
+  "preview": "プレビュー",
+  "light_mode": "ダークモードを切り替えると文字の色を変更することができます。",
   "footer": {
-    "created_by": "作者：",
-    "footer_text": "他のランキングアプリからいろいろアイデアいただいています、素材は僕のものじゃないです。",
+    "created_by": "作成：",
+    "footer_text": "デザインは@luseo29さんのもの",
     "source_code": "ソースコードをチェックしてみてね"
   },
   "error_page": {
