@@ -24,7 +24,6 @@ export function TemplateCanvas({
   const _canvasRef = useRef<HTMLCanvasElement>(null);
 
   const minSize = min(presetData.flatMap((p) => p.map((a) => a.size))) ?? 1;
-  const fontSize = baseSize ?? minSize;
   const { colorMode } = useColorModeContext();
 
   const canvasRef = ref ?? _canvasRef;

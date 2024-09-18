@@ -18,7 +18,7 @@ import { Text } from '~/components/ui/styled/text';
 
 export function Page() {
   const { toast } = useToaster();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [presetIndex, setPresetIndex] = useState(0);
   const [placeholderData, setPlaceholderData] = useState<Record<string, string>>({});
   const canvasRef = useRef<HTMLCanvasElement>(null);

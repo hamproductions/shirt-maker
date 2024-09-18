@@ -6,13 +6,11 @@ import type { Preset } from '~/utils/presets';
 export function Template({
   preset,
   baseSize,
-  placeholderData,
-  transparent
+  placeholderData
 }: {
   preset: Preset;
   baseSize?: number;
   placeholderData?: Record<string, string>;
-  transparent?: boolean;
 }) {
   const { data: presetData } = preset;
 
