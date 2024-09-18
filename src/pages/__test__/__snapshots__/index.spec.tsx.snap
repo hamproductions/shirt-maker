@@ -285,6 +285,16 @@ exports[`Home page > renders 1`] = `
             Download
           </button>
         </div>
+        <div
+          class="pos_absolute w_0 h_0 ov_hidden"
+        >
+          <div
+            class="d_flex flex-d_column gap_10px w_fit-content h_fit-content"
+            id="results"
+          >
+            <canvas />
+          </div>
+        </div>
       </div>
     </div>
     <div
