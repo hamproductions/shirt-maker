@@ -173,13 +173,13 @@ export function TemplateCanvas({
   useEffect(() => {
     const f = async () => {
       if (!fontLoaded) await loadFont();
-      clearCanvas();
-      renderContent();
+      setTimeout(() => {
+        clearCanvas();
+        renderContent();
+      }, 0);
     };
 
-    setTimeout(() => {
-      void f();
-    }, 0);
+    void f();
   }, [preset, placeholderData, colorMode]);
 
   return <canvas className={css({ fontFamily: 'var(--font-meiryo)' })} ref={canvasRef} />;
