@@ -2,7 +2,6 @@ import { max, min, sum } from 'lodash-es';
 import { join } from 'path-browserify';
 import type { RefObject } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { css } from 'styled-system/css';
 import { token } from 'styled-system/tokens';
 import { useColorModeContext } from '~/context/ColorModeContext';
 import { getTextDimensions } from '~/utils/canvas';
@@ -171,16 +170,15 @@ export function TemplateCanvas({
   };
 
   useEffect(() => {
-    const f = async () => {
-      if (!fontLoaded) await loadFont();
-      setTimeout(() => {
-        clearCanvas();
-        renderContent();
-      }, 0);
-    };
+    setTimeout(() => {
+      clearCanvas();
+      renderContent();
+    }, 0);
+  }, [fontLoaded, preset, placeholderData, colorMode]);
 
-    void f();
+  useEffect(() => {
+    void loadFont();
   }, [preset, placeholderData, colorMode]);
 
-  return <canvas className={css({ fontFamily: 'var(--font-meiryo)' })} ref={canvasRef} />;
+  return <canvas style={{ display: fontLoaded ? 'block' : 'none' }} ref={canvasRef} />;
 }
