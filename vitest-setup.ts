@@ -17,7 +17,7 @@ beforeEach(() => {
   // @ts-expect-error Mock
   window.location = new URL('http://localhost/');
   window.localStorage.clear();
-  window.FontFace = vi.fn().mockImplementation((fontFamily: string, source: string) => {
+  window.FontFace = vi.fn().mockImplementation((_fontFamily: string, _source: string) => {
     return {
       load: () => Promise.resolve()
     };
