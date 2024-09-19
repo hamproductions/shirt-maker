@@ -63,7 +63,10 @@ const config = defineConfig({
 
   globalFontface: {
     Meiryo: {
-      src: 'url(/fonts/Meiryo-Bold.ttf) format("ttf")',
+      src: [
+        'url(/fonts/Meiryo-Bold.woff2) format("woff2")',
+        'url(/fonts/Meiryo-Bold.woff) format("woff")'
+      ],
       fontWeight: 'bold',
       fontStyle: 'normal',
       fontDisplay: 'swap'

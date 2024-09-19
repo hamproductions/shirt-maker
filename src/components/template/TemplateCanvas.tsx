@@ -1,6 +1,7 @@
 import { max, min, sum } from 'lodash-es';
+import { join } from 'path-browserify';
 import type { RefObject } from 'react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { css } from 'styled-system/css';
 import { token } from 'styled-system/tokens';
 import { useColorModeContext } from '~/context/ColorModeContext';
@@ -20,6 +21,7 @@ export function TemplateCanvas({
 }) {
   const { data: presetData } = preset;
   const _canvasRef = useRef<HTMLCanvasElement>(null);
+  const [fontLoaded, setFontLoaded] = useState(false);
 
   const minSize = min(presetData.flatMap((p) => p.map((a) => a.size))) ?? 1;
   const { colorMode } = useColorModeContext();
@@ -154,10 +156,29 @@ export function TemplateCanvas({
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   };
 
+  const loadFont = async () => {
+    try {
+      const fontFace = new FontFace(
+        'Meiryo',
+        `url(${join(import.meta.env.BASE_URL, '/fonts/Meiryo-Bold.woff2')}) format('woff2')`
+      );
+      const font = await fontFace.load();
+      document.fonts.add(font);
+      setFontLoaded(true);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   useEffect(() => {
-    setTimeout(() => {
+    const f = async () => {
+      if (!fontLoaded) await loadFont();
       clearCanvas();
       renderContent();
+    };
+
+    setTimeout(() => {
+      void f();
     }, 0);
   }, [preset, placeholderData, colorMode]);
 
