@@ -16,9 +16,10 @@
         "resourceType": "script",
         "budget": 500
       },
+      { "resourceType": "font", "budget": "5000" },
       {
         "resourceType": "total",
-        "budget": 1000
+        "budget": 6000
       }
     ],
     "resourceCounts": [
