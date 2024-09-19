@@ -63,227 +63,233 @@ exports[`Home page > renders 1`] = `
           </button>
         </div>
         <div
-          class="d_flex flex-d_column ai_center gap_10px w_full max-w_breakpoint-lg"
+          class="d_flex ai_center jc_center"
         >
-          <h1
-            class="text text--variant_heading fs_2xl"
-          >
-            Custom Shirt Maker
-          </h1>
-          <p
-            class="text"
-          >
-            Want your own custom design? Try it here!
-             
-            <a
-              class="link"
-              href="https://x.com/luseo29/status/1799676661627252779"
-              target="_blank"
-            >
-              @luseo29's design.
-            </a>
-          </p>
-          <h2
-            class="text text--variant_heading fs_lg"
-          >
-            Select Design
-          </h2>
           <div
-            aria-labelledby="radio-group::r0::label"
-            aria-orientation="vertical"
-            class="radioGroup__root radioGroup__root--size_sm"
-            data-orientation="vertical"
-            data-part="root"
-            data-scope="radio-group"
-            dir="ltr"
-            id="radio-group::r0:"
-            role="radiogroup"
-            style="position: relative;"
+            class="d_flex flex-d_column ai_center gap_10px w_full max-w_breakpoint-lg"
           >
-            <label
-              class="radioGroup__item radioGroup__item--size_sm"
-              data-orientation="vertical"
-              data-part="item"
-              data-scope="radio-group"
-              data-state="checked"
-              dir="ltr"
-              for="radio-group::r0::radio:input:0"
-              id="radio-group::r0::radio:0"
+            <h1
+              class="text text--variant_heading fs_2xl"
             >
-              <div
-                aria-hidden="true"
-                class="radioGroup__itemControl radioGroup__itemControl--size_sm"
+              Custom Shirt Maker
+            </h1>
+            <p
+              class="text"
+            >
+              Want your own custom design? Try it here!
+               
+              <a
+                class="link"
+                href="https://x.com/luseo29/status/1799676661627252779"
+                target="_blank"
+              >
+                @luseo29's design.
+              </a>
+            </p>
+            <h2
+              class="text text--variant_heading fs_lg"
+            >
+              Select Design
+            </h2>
+            <div
+              aria-labelledby="radio-group::r0::label"
+              aria-orientation="vertical"
+              class="radioGroup__root radioGroup__root--size_sm"
+              data-orientation="vertical"
+              data-part="root"
+              data-scope="radio-group"
+              dir="ltr"
+              id="radio-group::r0:"
+              role="radiogroup"
+              style="position: relative;"
+            >
+              <label
+                class="radioGroup__item radioGroup__item--size_sm"
                 data-orientation="vertical"
-                data-part="item-control"
+                data-part="item"
                 data-scope="radio-group"
                 data-state="checked"
                 dir="ltr"
-                id="radio-group::r0::radio:control:0"
-              />
-              <span
-                class="radioGroup__itemText radioGroup__itemText--size_sm"
-                data-orientation="vertical"
-                data-part="item-text"
-                data-scope="radio-group"
-                data-state="checked"
-                dir="ltr"
-                id="radio-group::r0::radio:label:0"
+                for="radio-group::r0::radio:input:0"
+                id="radio-group::r0::radio:0"
               >
-                日本語は全て女性声優から学んだ
-              </span>
-              <input
-                checked=""
-                data-ownedby="radio-group::r0:"
-                id="radio-group::r0::radio:input:0"
-                name=":r0:"
-                style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; word-wrap: normal;"
-                type="radio"
-                value="0"
-              />
-            </label>
-            <label
-              class="radioGroup__item radioGroup__item--size_sm"
-              data-orientation="vertical"
-              data-part="item"
-              data-scope="radio-group"
-              data-state="unchecked"
-              dir="ltr"
-              for="radio-group::r0::radio:input:1"
-              id="radio-group::r0::radio:1"
+                <div
+                  aria-hidden="true"
+                  class="radioGroup__itemControl radioGroup__itemControl--size_sm"
+                  data-orientation="vertical"
+                  data-part="item-control"
+                  data-scope="radio-group"
+                  data-state="checked"
+                  dir="ltr"
+                  id="radio-group::r0::radio:control:0"
+                />
+                <span
+                  class="radioGroup__itemText radioGroup__itemText--size_sm"
+                  data-orientation="vertical"
+                  data-part="item-text"
+                  data-scope="radio-group"
+                  data-state="checked"
+                  dir="ltr"
+                  id="radio-group::r0::radio:label:0"
+                >
+                  日本語は全て女性声優から学んだ
+                </span>
+                <input
+                  checked=""
+                  data-ownedby="radio-group::r0:"
+                  id="radio-group::r0::radio:input:0"
+                  name=":r0:"
+                  style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; word-wrap: normal;"
+                  type="radio"
+                  value="0"
+                />
+              </label>
+              <label
+                class="radioGroup__item radioGroup__item--size_sm"
+                data-orientation="vertical"
+                data-part="item"
+                data-scope="radio-group"
+                data-state="unchecked"
+                dir="ltr"
+                for="radio-group::r0::radio:input:1"
+                id="radio-group::r0::radio:1"
+              >
+                <div
+                  aria-hidden="true"
+                  class="radioGroup__itemControl radioGroup__itemControl--size_sm"
+                  data-orientation="vertical"
+                  data-part="item-control"
+                  data-scope="radio-group"
+                  data-state="unchecked"
+                  dir="ltr"
+                  id="radio-group::r0::radio:control:1"
+                />
+                <span
+                  class="radioGroup__itemText radioGroup__itemText--size_sm"
+                  data-orientation="vertical"
+                  data-part="item-text"
+                  data-scope="radio-group"
+                  data-state="unchecked"
+                  dir="ltr"
+                  id="radio-group::r0::radio:label:1"
+                >
+                  日本語は全て女性声優のため学んだ
+                </span>
+                <input
+                  data-ownedby="radio-group::r0:"
+                  id="radio-group::r0::radio:input:1"
+                  name=":r0:"
+                  style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; word-wrap: normal;"
+                  type="radio"
+                  value="1"
+                />
+              </label>
+              <label
+                class="radioGroup__item radioGroup__item--size_sm"
+                data-orientation="vertical"
+                data-part="item"
+                data-scope="radio-group"
+                data-state="unchecked"
+                dir="ltr"
+                for="radio-group::r0::radio:input:2"
+                id="radio-group::r0::radio:2"
+              >
+                <div
+                  aria-hidden="true"
+                  class="radioGroup__itemControl radioGroup__itemControl--size_sm"
+                  data-orientation="vertical"
+                  data-part="item-control"
+                  data-scope="radio-group"
+                  data-state="unchecked"
+                  dir="ltr"
+                  id="radio-group::r0::radio:control:2"
+                />
+                <span
+                  class="radioGroup__itemText radioGroup__itemText--size_sm"
+                  data-orientation="vertical"
+                  data-part="item-text"
+                  data-scope="radio-group"
+                  data-state="unchecked"
+                  dir="ltr"
+                  id="radio-group::r0::radio:label:2"
+                >
+                  私が日本に来た理由は女性声優を会うために
+                </span>
+                <input
+                  data-ownedby="radio-group::r0:"
+                  id="radio-group::r0::radio:input:2"
+                  name=":r0:"
+                  style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; word-wrap: normal;"
+                  type="radio"
+                  value="2"
+                />
+              </label>
+            </div>
+            <h2
+              class="text text--variant_heading fs_lg"
             >
-              <div
-                aria-hidden="true"
-                class="radioGroup__itemControl radioGroup__itemControl--size_sm"
-                data-orientation="vertical"
-                data-part="item-control"
-                data-scope="radio-group"
-                data-state="unchecked"
-                dir="ltr"
-                id="radio-group::r0::radio:control:1"
-              />
-              <span
-                class="radioGroup__itemText radioGroup__itemText--size_sm"
-                data-orientation="vertical"
-                data-part="item-text"
-                data-scope="radio-group"
-                data-state="unchecked"
-                dir="ltr"
-                id="radio-group::r0::radio:label:1"
-              >
-                日本語は全て女性声優のため学んだ
-              </span>
-              <input
-                data-ownedby="radio-group::r0:"
-                id="radio-group::r0::radio:input:1"
-                name=":r0:"
-                style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; word-wrap: normal;"
-                type="radio"
-                value="1"
-              />
-            </label>
-            <label
-              class="radioGroup__item radioGroup__item--size_sm"
-              data-orientation="vertical"
-              data-part="item"
-              data-scope="radio-group"
-              data-state="unchecked"
-              dir="ltr"
-              for="radio-group::r0::radio:input:2"
-              id="radio-group::r0::radio:2"
+              Customize Text
+            </h2>
+            <p
+              class="text"
             >
-              <div
-                aria-hidden="true"
-                class="radioGroup__itemControl radioGroup__itemControl--size_sm"
-                data-orientation="vertical"
-                data-part="item-control"
-                data-scope="radio-group"
-                data-state="unchecked"
-                dir="ltr"
-                id="radio-group::r0::radio:control:2"
-              />
-              <span
-                class="radioGroup__itemText radioGroup__itemText--size_sm"
-                data-orientation="vertical"
-                data-part="item-text"
-                data-scope="radio-group"
-                data-state="unchecked"
-                dir="ltr"
-                id="radio-group::r0::radio:label:2"
+              Switch light/dark mode for black/white text version.
+            </p>
+            <input
+              class="input input--size_md"
+              value="女性声優"
+            />
+            <h2
+              class="text text--variant_heading fs_lg"
+            >
+              Preview
+            </h2>
+            <canvas
+              class="ff_var(--font-meiryo)"
+            />
+            <div
+              class="d_flex ai_center jc_center gap_10px flex-d_row"
+            >
+              <button
+                class="button button--variant_subtle button--size_md"
               >
-                私が日本に来た理由は女性声優を会うために
-              </span>
-              <input
-                data-ownedby="radio-group::r0:"
-                id="radio-group::r0::radio:input:2"
-                name=":r0:"
-                style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; word-wrap: normal;"
-                type="radio"
-                value="2"
-              />
-            </label>
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 448 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M208 0H332.1c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9V336c0 26.5-21.5 48-48 48H208c-26.5 0-48-21.5-48-48V48c0-26.5 21.5-48 48-48zM48 128h80v64H64V448H256V416h64v48c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V176c0-26.5 21.5-48 48-48z"
+                  />
+                </svg>
+                 
+                Copy to clipboard
+              </button>
+              <button
+                class="button button--variant_solid button--size_md"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                  />
+                </svg>
+                 
+                Download
+              </button>
+            </div>
           </div>
-          <h2
-            class="text text--variant_heading fs_lg"
-          >
-            Customize Text
-          </h2>
-          <p
-            class="text"
-          >
-            Switch light/dark mode for black/white text version.
-          </p>
-          <input
-            class="input input--size_md"
-            value="女性声優"
-          />
-          <h2
-            class="text text--variant_heading fs_lg"
-          >
-            Preview
-          </h2>
-          <canvas />
-        </div>
-        <div
-          class="d_flex ai_center jc_center gap_10px flex-d_row"
-        >
-          <button
-            class="button button--variant_subtle button--size_md"
-          >
-            <svg
-              fill="currentColor"
-              height="1em"
-              stroke="currentColor"
-              stroke-width="0"
-              viewBox="0 0 448 512"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M208 0H332.1c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9V336c0 26.5-21.5 48-48 48H208c-26.5 0-48-21.5-48-48V48c0-26.5 21.5-48 48-48zM48 128h80v64H64V448H256V416h64v48c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V176c0-26.5 21.5-48 48-48z"
-              />
-            </svg>
-             
-            Copy to clipboard
-          </button>
-          <button
-            class="button button--variant_solid button--size_md"
-          >
-            <svg
-              fill="currentColor"
-              height="1em"
-              stroke="currentColor"
-              stroke-width="0"
-              viewBox="0 0 512 512"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
-              />
-            </svg>
-             
-            Download
-          </button>
         </div>
         <div
           class="pos_absolute w_0 h_0 ov_hidden"
@@ -292,7 +298,9 @@ exports[`Home page > renders 1`] = `
             class="d_flex flex-d_column gap_10px w_fit-content h_fit-content"
             id="results"
           >
-            <canvas />
+            <canvas
+              class="ff_var(--font-meiryo)"
+            />
           </div>
         </div>
       </div>
