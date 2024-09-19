@@ -245,7 +245,7 @@ exports[`Home page > renders 1`] = `
               Preview
             </h2>
             <canvas
-              class="ff_var(--font-meiryo)"
+              style="display: block;"
             />
             <div
               class="d_flex ai_center jc_center gap_10px flex-d_row"
@@ -299,7 +299,7 @@ exports[`Home page > renders 1`] = `
             id="results"
           >
             <canvas
-              class="ff_var(--font-meiryo)"
+              style="display: block;"
             />
           </div>
         </div>
